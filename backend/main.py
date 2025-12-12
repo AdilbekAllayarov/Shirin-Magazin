@@ -23,12 +23,15 @@ load_dotenv()
 # Database yaratish
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Shirin Magazin API")
+app = FastAPI(title="Shirin Magazin API", version="1.0.0")
 
 # CORS sozlamalari
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "*")
+allowed_origins = allowed_origins_env.split(",") if allowed_origins_env != "*" else ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Production'da faqat frontend URL'ni qo'ying
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -222,3 +222,18 @@ Headers: All
 - No build step required for frontend
 - SQLite for simplicity (suitable for small to medium apps)
 - Eager relationships for cart items (N+1 query prevention)
+
+## Deployment
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment guide.
+
+**Quick Deploy:**
+- Backend: Render.com (free tier)
+- Frontend: Vercel/Netlify (free tier)
+- Docker: `docker-compose up -d`
+
+**Files for deployment:**
+- `backend/Dockerfile` - Docker configuration
+- `docker-compose.yml` - Multi-container setup
+- `backend/.env.production` - Production environment template
+- `frontend2/js/config.js` - Dynamic API URL configuration
